@@ -34,3 +34,30 @@ meme(function(data, err) {
   console.log(data.url[0]);
 });
 ```
+To get the author:
+```js
+var meme = require('memejs');
+
+meme(function(data, err) {
+  if (err) return console.error(err);
+  console.log(data.author[0]);
+});
+```
+To get the time the meme was created:
+```js
+var meme = require('memejs');
+
+meme(function(data, err) {
+  if (err) return console.error(err);
+  console.log(data.created[0]);
+});
+```
+To get the UTC time the meme was created:
+```js
+var meme = require('memejs');
+
+meme(function(data, err) {
+  if (err) return console.error(err);
+  console.log(data.created_utc[0]);
+});
+```

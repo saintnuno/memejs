@@ -1,5 +1,5 @@
 # memejs
-Get the best memes easily!
+Get the best memes with ease!
 
 ## Installation
 ```bash

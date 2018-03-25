@@ -7,7 +7,7 @@ npm install memejs
 ```
 
 ## Usage
-To get the full JSON output;
+To get the full JSON output:
 ```js
 var meme = require('memejs');
 

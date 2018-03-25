@@ -10,7 +10,7 @@ var meme = function(callback) {
     };
     req.get(`${ran}.json?sort=top&t=day&limit=100`, function(err, res, body) {
         if (err || res.statusCode !== 200) {
-            console.error(new Error('Try running this shit again'));
+            console.error(new Error('Try running the program again.'));
             return callback(err);
         } else
         if (!err && res.statusCode === 200) {

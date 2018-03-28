@@ -1,13 +1,21 @@
 var req = require('request');
+
 var utils = require('./utils');
 
 var meme = function(callback) {
-    var arr = ['https://www.reddit.com/r/dankmemes/', 'https://www.reddit.com/r/me_irl/', 'https://www.reddit.com/r/wholesomememes/', 'https://www.reddit.com/r/MemeEconomy/'];
+    var arr = [
+        'https://www.reddit.com/r/crappydesign/',
+        'https://www.reddit.com/r/dankmemes/',
+        'https://www.reddit.com/r/me_irl/',
+        'https://www.reddit.com/r/wholesomememes/',
+        'https://www.reddit.com/r/MemeEconomy/'
+    ];
     var ran = arr[~~(Math.random() * arr.length)];
     var obj = {
         'title': [],
         'url': [],
         'author': [],
+        'subreddit': [],
         'created': [],
         'created_utc': []
     };
@@ -23,6 +31,7 @@ var meme = function(callback) {
             obj.title.push(data[rand].data.title);
             obj.url.push(data[rand].data.url);
             obj.author.push(data[rand].data.author);
+            obj.subreddit.push(data[rand].data.subreddit);
             obj.created.push(utils.time(parseInt(data[rand].data.created)));
             obj.created_utc.push(utils.time(parseInt(data[rand].data.created_utc)));
             return callback(obj);

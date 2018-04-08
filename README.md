@@ -43,6 +43,15 @@ meme(function(data, err) {
   console.log(data.author[0]);
 });
 ```
+to get the subreddit:
+```js
+var meme = require('memejs');
+
+meme(function(data, err) {
+  if (err) return console.error(err);
+  console.log(data.subreddit[0]);
+});
+```
 To get the time the meme was created:
 ```js
 var meme = require('memejs');
@@ -60,4 +69,21 @@ meme(function(data, err) {
   if (err) return console.error(err);
   console.log(data.created_utc[0]);
 });
+```
+To filter subreddits:
+```js
+var meme = require('memejs');
+
+meme('crappydesign', function(data, err) {
+  if (err) return console.error(err);
+  console.log(data);
+});
+```
+Possible subreddits to filter are:
+```
+crappydesign
+dankmemes
+me_irl
+wholesomememes
+memeeconomy
 ```

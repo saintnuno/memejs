@@ -9,7 +9,16 @@ var meme = function(sr, callback) {
         'https://www.reddit.com/r/dankmemes/',
         'https://www.reddit.com/r/me_irl/',
         'https://www.reddit.com/r/wholesomememes/',
-        'https://www.reddit.com/r/memeeconomy/'
+        'https://www.reddit.com/r/memeeconomy/',
+        'https://www.reddit.com/r/adviceanimals',
+        'https://www.reddit.com/r/comedycemetery',
+        'https://www.reddit.com/r/memes/',
+        'www.reddit.com/r/prequelmemes/',
+        'www.reddit.com/r/terriblefacebookmemes/',
+        'www.reddit.com/r/pewdiepiesubmissions/',
+        'www.reddit.com/r/funny/',
+        'www.reddit.com/r/teenagers/'
+        
     ];
 
     var opts = [
@@ -17,7 +26,15 @@ var meme = function(sr, callback) {
         'dankmemes',
         'me_irl',
         'wholesomememes',
-        'memeeconomy'
+        'memeeconomy',
+        'adviceanimals',
+        'comedycemetery',
+        'memes',
+        'prequelmemes',
+        'terriblefacebookmemes',
+        'pewdiepiesubmissions',
+        'funny',
+        'teenagers'
     ];
 
     var url;

@@ -86,4 +86,12 @@ dankmemes
 me_irl
 wholesomememes
 memeeconomy
+adviceanimals
+comedycemetery
+memes
+prequelmemes
+terriblefacebookmemes
+pewdiepiesubmissions
+funny
+teenagers
 ```

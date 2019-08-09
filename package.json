@@ -1,6 +1,6 @@
 {
   "name": "memejs",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Get the best memes with ease!",
   "main": "index.js",
   "scripts": {

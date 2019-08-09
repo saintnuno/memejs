@@ -95,4 +95,4 @@ pewdiepiesubmissions
 funny
 teenagers
 ```
-Created by Nuriel Taha
+Created by Nuriel Taha (nuno#4160)

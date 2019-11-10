@@ -71,7 +71,7 @@ var meme = function(sr, callback) {
         'created_utc': []
     };
 
-    req.get(url, function(err, res, body) {
+    req.get(encodeURI(url), function(err, res, body) {
         if (err || res.statusCode !== 200) {
             console.error(new Error('Try running the program again.'));
             return callback(err);

@@ -13,11 +13,11 @@ var meme = function(sr, callback) {
         'https://www.reddit.com/r/adviceanimals',
         'https://www.reddit.com/r/comedycemetery',
         'https://www.reddit.com/r/memes/',
-        'www.reddit.com/r/prequelmemes/',
-        'www.reddit.com/r/terriblefacebookmemes/',
-        'www.reddit.com/r/pewdiepiesubmissions/',
-        'www.reddit.com/r/funny/',
-        'www.reddit.com/r/teenagers/'
+        'https://www.reddit.com/r/prequelmemes/',
+        'https://www.reddit.com/r/terriblefacebookmemes/',
+        'https://www.reddit.com/r/pewdiepiesubmissions/',
+        'https://www.reddit.com/r/funny/',
+        'https://www.reddit.com/r/teenagers/'
         
     ];
 

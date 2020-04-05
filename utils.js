@@ -10,6 +10,14 @@ class Utils {
           ':' + ('0' + u.getUTCSeconds()).slice(-2) +
           '.' + (u.getUTCMilliseconds() / 1000).toFixed(3).slice(2, 5) 
     }
+
+    static extensionCheck(url) {
+        if (/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|gifv)/g.test(url)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 module.exports = Utils;

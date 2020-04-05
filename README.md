@@ -59,7 +59,7 @@ memeAsync()
 ```
 
 Example of JSON output:
-```json
+```
 {
   title: 'Me irl',
   url: 'https://i.redd.it/zdaqicupnzq41.jpg',

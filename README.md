@@ -20,7 +20,7 @@ meme(function(data, err) {
 
 To filter subreddits:
 ```js
-var { meme } = require('memejs');
+const { meme } = require('memejs');
  
 meme('crappydesign', function(data, err) {
   if (err) return console.error(err);
@@ -32,7 +32,7 @@ Async requests:
 ```js
 const { memeAsync } = require('memejs');
 
-memeAsync() // Use meme(subredditname) to filter subreddits
+memeAsync() // Use meme('subredditname') to filter subreddits
 .then(m => {
   // Do stuff with the JSON
   console.log(m);

@@ -1,5 +1,5 @@
 # memejs
-Get the best memes with ease!
+Retrieve memes easily from reddit.
 <p><a href="https://www.npmjs.com/package/memejs" rel="nofollow"><img src="https://badgen.net/npm/dt/memejs" alt="Downloads" /></a></p>
 
 ## Installation
@@ -10,76 +10,66 @@ npm install memejs
 ## Usage
 To get the full JSON output:
 ```js
-var meme = require('memejs');
+const { meme } = require('memejs');
 
 meme(function(data, err) {
   if (err) return console.error(err);
   console.log(data);
 });
 ```
-To get the meme title:
-```js
-var meme = require('memejs');
 
-meme(function(data, err) {
-  if (err) return console.error(err);
-  console.log(data.title[0]);
-});
-```
-To get the meme url:
-```js
-var meme = require('memejs');
-
-meme(function(data, err) {
-  if (err) return console.error(err);
-  console.log(data.url[0]);
-});
-```
-To get the author:
-```js
-var meme = require('memejs');
-
-meme(function(data, err) {
-  if (err) return console.error(err);
-  console.log(data.author[0]);
-});
-```
-to get the subreddit:
-```js
-var meme = require('memejs');
-
-meme(function(data, err) {
-  if (err) return console.error(err);
-  console.log(data.subreddit[0]);
-});
-```
-To get the time the meme was created:
-```js
-var meme = require('memejs');
-
-meme(function(data, err) {
-  if (err) return console.error(err);
-  console.log(data.created[0]);
-});
-```
-To get the UTC time the meme was created:
-```js
-var meme = require('memejs');
-
-meme(function(data, err) {
-  if (err) return console.error(err);
-  console.log(data.created_utc[0]);
-});
-```
 To filter subreddits:
 ```js
-var meme = require('memejs');
-
+var { meme } = require('memejs');
+ 
 meme('crappydesign', function(data, err) {
   if (err) return console.error(err);
   console.log(data);
 });
 ```
+
+Async requests:
+```js
+const { memeAsync } = require('memejs');
+
+memeAsync() // Use meme(subredditname) to filter subreddits
+.then(m => {
+  // Do stuff with the JSON
+  console.log(m);
+})
+.catch(e => {
+  // Handle the error
+  console.log(e);
+})
+```
+
+TypeScript support:
+```ts
+import { memeAsync } from 'memejs';
+
+memeAsync()
+.then(m => {  
+  // Do stuff with the JSON
+  console.log(m);
+})
+.catch(e => {
+  // Handle the error
+  console.log(e);
+});
+```
+
+Example of JSON output:
+```json
+{
+  title: 'Me irl',
+  url: 'https://i.redd.it/zdaqicupnzq41.jpg',
+  author: 'godofeverythingelse',
+  subreddit: 'me_irl',
+  created: '2020-03-05 19:55:59.000',
+  created_utc: '2020-03-05 11:55:59.000'
+}
+```
+
 Possible subreddits to filter are:
 ```
 crappydesign
@@ -94,6 +84,5 @@ prequelmemes
 terriblefacebookmemes
 pewdiepiesubmissions
 funny
-teenagers
 ```
-Created by Nuriel Taha (nuno#4160)
+Created by Kyle (Imposed#9787) and Nuno (nuno#4160)

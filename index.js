@@ -33,7 +33,8 @@ const opts = [
     'prequelmemes',
     'terriblefacebookmemes',
     'pewdiepiesubmissions',
-    'funny'
+    'funny',
+    'teenagers'
 ];
 
 exports.meme = (sr, callback) => {
@@ -43,7 +44,7 @@ exports.meme = (sr, callback) => {
 
     if (typeof sr === 'function') {
         callback = sr
-        sr = {}
+        // sr = {}
 
         url = `${ran}.json?sort=top&t=day&limit=100`;
     } else {
@@ -78,6 +79,10 @@ exports.meme = (sr, callback) => {
             body = JSON.parse(res.body);
             data = body.data.children;
             data = data.filter(i => utils.extensionCheck(i.data.url));
+            if (!data.length && !sr) 
+                return callback(this.meme());
+            else if(!data.length && typeof sr === 'string') 
+                return callback('No results found');
             if (!data.length)
                 return callback('No results found.');
             var rand = Math.floor(Math.random() * Math.floor(data.length));
@@ -99,7 +104,6 @@ exports.memeAsync = async (sr) => {
         let t;
     
         if (!sr) {
-            sr = {}
             url = `${ran}.json?sort=top&t=day&limit=100`;
         } else {
             if (!opts.includes(sr.toLowerCase()))
@@ -130,8 +134,12 @@ exports.memeAsync = async (sr) => {
             body = JSON.parse(body);
             let data = body.data.children;
             data = data.filter(i => utils.extensionCheck(i.data.url));
-            if (!data.length)
-                reject('No results found.');
+            if (!data.length && !sr) 
+                resolve(this.memeAsync());
+            else if(!data.length && typeof sr === 'string') {
+                reject('No results found');
+            }
+                
             let rand = Math.floor(Math.random() * Math.floor(data.length));
             obj.title = data[rand].data.title;
             obj.url = data[rand].data.url;

@@ -1,6 +1,6 @@
 # memejs
 Get the best memes with ease!
-[![NPM Downloads][downloads-image]][https://badgen.net/npm/dt/memejs]
+<p><a href="https://www.npmjs.com/package/memejs" rel="nofollow"><img src="https://badgen.net/npm/dt/memejs" alt="Downloads" /></a></p>
 
 ## Installation
 ```bash

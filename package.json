@@ -9,7 +9,33 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Nuno135/memejs.git"
+  },{
+  "name": "memejs",
+  "version": "1.2.1",
+  "description": "Retrieve memes easily from reddit.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nuno135/memejs.git"
+  },
+  "keywords": [
+    "Memes"
+  ],
+  "author": "Nuriel Taha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nuno135/memejs/issues"
+  },
+  "homepage": "https://github.com/Nuno135/memejs#readme",
+  "dependencies": {
+    "request": "^2.88.2",
+    "request-promise": "^4.2.5"
+  }
+}
+
   "keywords": [
     "Memes"
   ],

@@ -1,3 +1,5 @@
+const request = require('request-promise');
+
 class Utils {
     static time(unixtime) {
         var u = new Date(unixtime*1000);
@@ -17,6 +19,22 @@ class Utils {
         } else {
             return false;
         }
+    }
+
+    static async subredditCheck(url) {
+        return new Promise(async (resolve, reject) => {
+            request(url)
+            .then((body) => {
+                body = JSON.parse(body);
+                let data = body.data.children;
+                if (!data.length)
+                    resolve(false);
+                resolve(true);
+            })
+            .catch(e => {
+                resolve(false);
+            })
+        })
     }
 }
 

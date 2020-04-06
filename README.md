@@ -12,7 +12,7 @@ To get the full JSON output:
 ```js
 const { meme } = require('memejs');
 
-meme(function(data, err) {
+meme(function(err, data) {
   if (err) return console.error(err);
   console.log(data);
 });
@@ -22,7 +22,7 @@ To filter subreddits:
 ```js
 const { meme } = require('memejs');
  
-meme('crappydesign', function(data, err) {
+meme('crappydesign', function(err, data) {
   if (err) return console.error(err);
   console.log(data);
 });
@@ -32,7 +32,7 @@ Async requests:
 ```js
 const { memeAsync } = require('memejs');
 
-memeAsync() // Use meme('subredditname') to filter subreddits
+memeAsync() // Use memeAsync('subredditname') to filter subreddits
 .then(m => {
   // Do stuff with the JSON
   console.log(m);
@@ -47,7 +47,7 @@ TypeScript support:
 ```ts
 import { memeAsync } from 'memejs';
 
-memeAsync()
+memeAsync() // Use memeAsync('subredditname') to filter subreddits
 .then(m => {  
   // Do stuff with the JSON
   console.log(m);
@@ -70,19 +70,6 @@ Example of JSON output:
 }
 ```
 
-Possible subreddits to filter are:
-```
-crappydesign
-dankmemes
-me_irl
-wholesomememes
-memeeconomy
-adviceanimals
-comedycemetery
-memes
-prequelmemes
-terriblefacebookmemes
-pewdiepiesubmissions
-funny
-```
+**Note:** You can now search for any subreddit.
+
 Created by Kyle (Imposed#9787) and Nuno (nuno#4160)

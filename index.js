@@ -1,7 +1,4 @@
-const req = require('request');
-
 const request = require('request-promise');
-
 const utils = require('./utils');
 
 const opts = [
@@ -19,107 +16,60 @@ const opts = [
 	'funny'
 ];
 
-exports.meme = async (sr, callback) => {
-	let url;
-	var ran = opts[~~(Math.random() * opts.length)];
+function getRandomSubRedit() {
+    return opts[~~(Math.random() * opts.length)];
+}
 
-	if (typeof sr === 'function') {
-		callback = sr;
-		url = `https://www.reddit.com/r/${ran}.json?sort=top&t=day&limit=100`;
-	} else {
-		url = `https://www.reddit.com/r/${sr}.json?sort=top&t=day&limit=100`;
-	}
+function formatObject(data) {
 
-	await utils.subredditCheck(url)
-		.then(r => {
-			if (!r)
-				return callback(new Error('Invalid subreddit.'));
-			let obj = {
-				'title': '',
-				'url': '',
-				'author': '',
-				'subreddit': '',
-				'created': '',
-				'created_utc': ''
-			};
+    return {
+        title: data.title,
+        url: data.url,
+        author: data.author,
+        subreddit: data.subreddit,
+        created: utils.time(parseInt(data.created)),
+        created_utc: utils.time(parseInt(data.created_utc))
+    };
+}
 
-			req.get(encodeURI(url), function(err, res, body) {
-				if (err || res.statusCode !== 200) {
-					return callback(new Error(err));
-				} else
-				if (!err && res.statusCode === 200) {
-					body = JSON.parse(res.body);
-					data = body.data.children;
-					data = data.filter(i => utils.extensionCheck(i.data.url));
-					if (!data.length && !sr)
-						return callback(null, this.meme());
-					else if (!data.length && typeof sr === 'string')
-						return callback(new Error('No results found'));
-					if (!data.length)
-						return callback(new Error('No results found'));
-					var rand = Math.floor(Math.random() * Math.floor(data.length));
-					obj.title = data[rand].data.title;
-					obj.url = data[rand].data.url;
-					obj.author = data[rand].data.author;
-					obj.subreddit = data[rand].data.subreddit;
-					obj.created = utils.time(parseInt(data[rand].data.created));
-					obj.created_utc = utils.time(parseInt(data[rand].data.created_utc));
-					return callback(null, obj);
-				}
-			})
+function meme(subredit, callback) {
+
+    if (typeof subredit === 'function') {
+        callback = subredit;
+        subredit = getRandomSubRedit();
+    }
+
+    if (subredit === undefined) subredit = getRandomSubRedit();
+
+    let url = `https://www.reddit.com/r/${subredit}.json?sort=top&t=day&limit=100`;
+
+
+    return utils.subredditCheck(url)
+		.then(() => request(encodeURI(url)))
+		.then((body) => {
+
+			body = JSON.parse(body);
+			let data = body.data.children;
+			data = data.filter(i => utils.extensionCheck(i.data.url));
+
+			if (!data.length) throw new Error('No results found (png/jpg/gif/gifv).');
+
+			let rand = Math.floor(Math.random() * Math.floor(data.length));
+
+            let obj = formatObject(data[rand].data);
+            return typeof callback === 'function' ? callback(obj) : obj;
 		})
-		.catch(e => {
-			return callback(new Error(e));
-		});
+        .catch(err => {
+
+            if (typeof callback === 'function') {
+                callback(null, err);
+            } else {
+                throw err;
+            }
+        });
 }
 
-exports.memeAsync = async (sr) => {
-	return new Promise(async (resolve, reject) => {
-		let url;
-		let ran = opts[~~(Math.random() * opts.length)];
+exports.meme = meme;
 
-		if (!sr) {
-            url = `https://www.reddit.com/r/${ran}.json?sort=top&t=day&limit=100`;
-        } else {
-            url = `https://www.reddit.com/r/${sr}.json?sort=top&t=day&limit=100`;
-        }
-
-		await utils.subredditCheck(url)
-			.then(r => {
-				if (!r)
-					reject('Invalid subreddit');
-			})
-			.catch(e => reject(e));
-
-		let obj = {
-			'title': '',
-			'url': '',
-			'author': '',
-			'subreddit': '',
-			'created': '',
-			'created_utc': ''
-		};
-
-		request(encodeURI(url))
-			.then((body) => {
-				body = JSON.parse(body);
-				let data = body.data.children;
-				data = data.filter(i => utils.extensionCheck(i.data.url));
-				if (!data.length && !sr)
-					resolve(this.memeAsync());
-				else if (!data.length && typeof sr === 'string') {
-					reject('No results found (png/jpg/gif/gifv).');
-				}
-
-				let rand = Math.floor(Math.random() * Math.floor(data.length));
-				obj.title = data[rand].data.title;
-				obj.url = data[rand].data.url;
-				obj.author = data[rand].data.author;
-				obj.subreddit = data[rand].data.subreddit;
-				obj.created = utils.time(parseInt(data[rand].data.created));
-				obj.created_utc = utils.time(parseInt(data[rand].data.created_utc));
-				resolve(obj);
-			})
-			.catch((err) => reject(err));
-	})
-}
+// this is deprecated to be removed in version 2.0
+exports.memeAsync = meme;

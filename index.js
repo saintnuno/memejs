@@ -57,12 +57,12 @@ function meme(subredit, callback) {
 			let rand = Math.floor(Math.random() * Math.floor(data.length));
 
             let obj = formatObject(data[rand].data);
-            return typeof callback === 'function' ? callback(obj) : obj;
+            return typeof callback === 'function' ? callback(null, obj) : obj;
 		})
         .catch(err => {
 
             if (typeof callback === 'function') {
-                callback(null, err);
+                callback(err, null);
             } else {
                 throw err;
             }

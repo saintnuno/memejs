@@ -70,7 +70,7 @@ test('index.meme - prommise cats success', () => {
 
 test('index.meme - callback default success', done => {
 
-    index.meme((obj, err) => {
+    index.meme((err, obj) => {
         expect(obj).toContainAllKeys(keys);
         done();
     })
@@ -78,7 +78,7 @@ test('index.meme - callback default success', done => {
 
 test('index.meme - callback cats success', done => {
 
-    index.meme("cats", (obj, err) => {
+    index.meme("cats", (err, obj) => {
         expect(obj).toContainAllKeys(keys);
         expect(obj).toContainEntry(['subreddit', 'cats'])
         done();
@@ -108,7 +108,7 @@ test('index.memeAsync - prommise cats success', () => {
 
 test('index.memeAsync - callback default success', done => {
 
-    index.memeAsync((obj, err) => {
+    index.memeAsync((err, obj) => {
         expect(obj).toContainAllKeys(keys);
         done();
     })
@@ -116,7 +116,7 @@ test('index.memeAsync - callback default success', done => {
 
 test('index.memeAsync - callback cats success', done => {
 
-    index.memeAsync("cats", (obj, err) => {
+    index.memeAsync("cats", (err, obj) => {
         expect(obj).toContainAllKeys(keys);
         expect(obj).toContainEntry(['subreddit', 'cats'])
         done();

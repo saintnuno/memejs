@@ -4,11 +4,12 @@
   "description": "Retrieve memes easily from reddit.",
   "main": "index.js",
   "scripts": {
-    "test": "jest --collect-coverage"
+    "test": "jest",
+    "coverage": "jest --collect-coverage"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Nuno135/memejs.git"
+    "url": "git+https://github.com/Nuno135/memejs.git"
   },
   "keywords": [
     "Memes"

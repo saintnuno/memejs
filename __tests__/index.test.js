@@ -84,3 +84,41 @@ test('index.meme - callback cats success', done => {
         done();
     })
 });
+
+
+test('index.memeAsync - prommise random success', () => {
+
+    return expect(index.memeAsync()).resolves.toContainAllKeys(keys);
+});
+
+test('index.memeAsync - prommise puppy success', () => {
+
+    return expect(index.memeAsync("puppy")).resolves.toContainEntry(['subreddit', 'puppy']);
+});
+
+test('index.memeAsync - prommise cats success', () => {
+
+    return expect(index.memeAsync("cats")).resolves.toContainEntry(['subreddit', 'cats']);
+});
+
+test('index.memeAsync - prommise cats success', () => {
+
+    return expect(index.memeAsync("cats")).resolves.toContainEntry(['subreddit', 'cats']);
+});
+
+test('index.memeAsync - callback default success', done => {
+
+    index.memeAsync((obj, err) => {
+        expect(obj).toContainAllKeys(keys);
+        done();
+    })
+});
+
+test('index.memeAsync - callback cats success', done => {
+
+    index.memeAsync("cats", (obj, err) => {
+        expect(obj).toContainAllKeys(keys);
+        expect(obj).toContainEntry(['subreddit', 'cats'])
+        done();
+    })
+});

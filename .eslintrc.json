@@ -1,0 +1,28 @@
+{
+    "env": {
+        "commonjs": true,
+        "es6": true,
+        "node": true,
+        "jest": true
+    },
+    "extends": "airbnb",
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018
+    },
+    "rules": {
+        "indent": [
+            "error",
+            4
+        ],
+        "object-curly-newline": ["error", {
+            "ObjectExpression": "always",
+            "ObjectPattern": { "multiline": true },
+            "ImportDeclaration": "never",
+            "ExportDeclaration": { "multiline": true, "minProperties": 3 }
+        }]
+    }
+}

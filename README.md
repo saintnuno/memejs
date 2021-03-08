@@ -4,58 +4,16 @@ Retrieve memes easily from reddit.
 
 ## Installation
 ```bash
-npm install memejs
+npm install memejs --save
 ```
 
-## Usage
-To get the full JSON output:
+## How to use memejs
 ```js
 const { meme } = require('memejs');
 
-meme(function(err, data) {
-  if (err) return console.error(err);
-  console.log(data);
-});
-```
-
-To filter subreddits:
-```js
-const { meme } = require('memejs');
- 
-meme('crappydesign', function(err, data) {
-  if (err) return console.error(err);
-  console.log(data);
-});
-```
-
-Async requests:
-```js
-const { memeAsync } = require('memejs');
-
-memeAsync() // Use memeAsync('subredditname') to filter subreddits
-.then(m => {
-  // Do stuff with the JSON
-  console.log(m);
-})
-.catch(e => {
-  // Handle the error
-  console.log(e);
-})
-```
-
-TypeScript support:
-```ts
-import { memeAsync } from 'memejs';
-
-memeAsync() // Use memeAsync('subredditname') to filter subreddits
-.then(m => {  
-  // Do stuff with the JSON
-  console.log(m);
-})
-.catch(e => {
-  // Handle the error
-  console.log(e);
-});
+memeAsync() // Use meme('subredditname') to filter subreddits
+.then(m => console.log(m)) // Get the JSON output
+.catch(e => console.log(e)); // Handle any errors
 ```
 
 Example of JSON output:
@@ -70,6 +28,8 @@ Example of JSON output:
 }
 ```
 
-**Note:** You can now search for any subreddit.
+**Note:** V2 is now out, fully reworked with TypeScript. No need for callbacks anymore!
 
-Created by Kyle (Imposed#9787) and Nuno (nuno#4160)
+Created by [Kyle](https://github.com/scrap) and Nuno (nuno#4160)
+
+Honorable mention [marshallasch](https://github.com/marshallAsch/) --> [reasoning](https://github.com/Nuno135/memejs/pull/6)

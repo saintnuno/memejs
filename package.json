@@ -1,6 +1,6 @@
 {
   "name": "memejs",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "dist/index.js",
   "repository": "https://github.com/Nuno135/memejs",
   "author": "Nuriel Taha",

@@ -38,7 +38,7 @@ function meme(reddit, callback) {
                 return console.log('No results found.');
             const math = Math.floor(Math.random() * Math.floor(body.length));
             const random = body[math].data;
-            if (!/^.*\.(jpg?g|png|gif|gifv)$/.test(url))
+            if (!/^.*\.(jpg?g|png|gif|gifv)$/.test(random.url))
                 return console.log('No results found.');
             object = {
                 title: random.title,

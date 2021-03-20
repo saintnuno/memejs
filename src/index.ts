@@ -35,7 +35,7 @@ export async function meme(reddit?: string, callback?: any) {
 		if(!body.length) return console.log('No results found.');
 		const math: number = Math.floor(Math.random() * Math.floor(body.length));
 		const random = body[math].data;
-		if(!/^.*\.(jpg?g|png|gif|gifv)$/.test(url)) return console.log('No results found.');
+		if(!/^.*\.(jpg?g|png|gif|gifv)$/.test(random.url)) return console.log('No results found.');
 		object = {
 			title: random.title,
 			url: random.url,

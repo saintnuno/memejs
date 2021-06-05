@@ -7,6 +7,7 @@ interface redditObject {
 	subreddit: string;
 	created: number;
 	created_utc: number;
+	nsfw: boolean;
 }
 
 const subs: string[] = [
@@ -42,7 +43,8 @@ export async function meme(reddit?: string, callback?: any) {
 			author: random.author,
 			subreddit: random.subreddit,
 			created: time(random.created as number),
-			created_utc: time(random.created_utc as number)
+			created_utc: time(random.created_utc as number),
+			nsfw: random.over_18
 		}
 	}).catch(e => new Error(e));
 	return object;

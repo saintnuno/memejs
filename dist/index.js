@@ -46,7 +46,8 @@ function meme(reddit, callback) {
                 author: random.author,
                 subreddit: random.subreddit,
                 created: utils_1.time(random.created),
-                created_utc: utils_1.time(random.created_utc)
+                created_utc: utils_1.time(random.created_utc),
+                nsfw: random.over_18
             };
         }).catch(e => new Error(e));
         return object;

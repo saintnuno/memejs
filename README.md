@@ -24,7 +24,8 @@ Example of JSON output:
   author: 'godofeverythingelse',
   subreddit: 'me_irl',
   created: '2020-03-05 19:55:59.000',
-  created_utc: '2020-03-05 11:55:59.000'
+  created_utc: '2020-03-05 11:55:59.000',
+  nsfw: false
 }
 ```
 

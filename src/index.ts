@@ -39,6 +39,7 @@ export async function meme(reddit?: string, callback?: any) {
 		object = {
 			title: random.title,
 			url: random.url,
+			post_url: random.permalink,
 			author: random.author,
 			subreddit: random.subreddit,
 			created: time(random.created as number),

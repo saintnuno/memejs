@@ -2,6 +2,7 @@ import { time, checkSubreddit } from "./utils";
 
 interface redditObject {
 	title: string;
+	post_url: string;
 	url: string;
 	author: string;
 	subreddit: string;
